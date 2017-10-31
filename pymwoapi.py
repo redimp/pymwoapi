@@ -32,7 +32,6 @@ def fetch_game(key, id):
     g.map = data[u'MatchDetails'][u'Map']
     g.completetime = data[u'MatchDetails'][u'CompleteTime']
     g.gamemode = data[u'MatchDetails'][u'GameMode']
-    g.map = data[u'MatchDetails'][u'Map']
     g.matchduration = int(data[u'MatchDetails'][u'MatchDuration'])
     g.matchtimeminutes = int(data[u'MatchDetails'][u'MatchTimeMinutes'])
     g.nomechefficiencies = data[u'MatchDetails'][u'NoMechEfficiencies']
@@ -90,7 +89,6 @@ class Game(object):
         self.spectator = []
         self.winner = None
         self.looser = None
-        self.map = None
         self.completetime = None
         self.gamemode = None
         self.map = None
