@@ -66,7 +66,10 @@ def fetch_game(key, id):
         p.mechitemid = udata[u'MechItemID']
         p.mechname = udata[u'MechName']
         p.skilltier = udata[u'SkillTier']
-        p.team = int(udata[u'Team'])
+        try: 
+          p.team = int(udata[u'Team'])
+        except TypeError:
+          p.team = 0
         p.teamdamage = udata[u'TeamDamage']
         p.unittag = udata[u'UnitTag']
         p.username = udata[u'Username']
