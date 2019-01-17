@@ -42,14 +42,18 @@ def fetch_game(key, id):
     g.timeofday = data[u'MatchDetails'][u'TimeOfDay']
     g.usestockloadout = data[u'MatchDetails'][u'UseStockLoadout']
     g.viewmode = data[u'MatchDetails'][u'ViewMode']
-    g.winningteam = int(data[u'MatchDetails'][u'WinningTeam'])
+    try:
+        g.winningteam = int(data[u'MatchDetails'][u'WinningTeam'])
+    except TypeError:
+        g.winningteam = None
     # set winner and looser
-    if g.winningteam == 1:
-        g.winner = g.team1
-        g.looser = g.team2
-    else:
-        g.winner = g.team2
-        g.looser = g.team1
+    if g.winningteam is not None:
+        if g.winningteam == 1:
+            g.winner = g.team1
+            g.looser = g.team2
+        else:
+            g.winner = g.team2
+            g.looser = g.team1
 
     # collect player data
     for udata in data[u'UserDetails']:
